@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "267656919010",
+    "project_id": "my-santiago-cocina",
+    "storage_bucket": "my-santiago-cocina.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:267656919010:android:fa244a72b8a15f7da46bbb",
+        "android_client_info": {
+          "package_name": "com.example.santiagococinaapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "267656919010-e3g0k2qtqtt7nesgt9vf1osl40b1r44g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPTOy34qswO48n8qYY0cGj_NV-cldfIoE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "267656919010-e3g0k2qtqtt7nesgt9vf1osl40b1r44g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
