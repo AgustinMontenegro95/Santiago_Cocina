@@ -48,51 +48,54 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: Container(
-        color: Colors.white,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                AnimatedDefaultTextStyle(
-                  duration: transitionDuration,
-                  curve: Curves.fastOutSlowIn,
-                  style: TextStyle(
-                    color: Color(0xFFFF8F00),
-                    fontSize: !expanded ? _bigFontSize : 45,
-                    fontFamily: 'Montserrat',
-                    fontWeight: FontWeight.w900,
-                    fontStyle: FontStyle.italic,
-                  ),
-                  child: Text(
-                    "S",
-                  ),
+      child: Center(
+        child: Container(
+          color: Colors.white,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(height: 70),
+              SizedBox(
+                height: 200,
+                width: 200,
+                child: Image.asset("assets/logo_naranja.png")
+              ),
+              SizedBox(height: 80,),
+              Center(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    AnimatedDefaultTextStyle(
+                      duration: transitionDuration,
+                      curve: Curves.fastOutSlowIn,
+                      style: TextStyle(
+                        color: Color(0xFFFF8F00),
+                        fontSize: !expanded ? _bigFontSize : 45,
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w900,
+                        fontStyle: FontStyle.italic,
+                      ),
+                      child: Text(
+                        "S",
+                      ),
+                    ),
+                    AnimatedCrossFade(
+                      firstCurve: Curves.fastOutSlowIn,
+                      crossFadeState: !expanded ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+                      duration: transitionDuration,
+                      firstChild: SizedBox(height: 0, width: 0,),
+                      secondChild: _logoRemainder(),
+                      alignment: Alignment.centerLeft,
+                      sizeCurve: Curves.easeInOut,
+                    ),
+                  ],
                 ),
-                AnimatedCrossFade(
-                  firstCurve: Curves.fastOutSlowIn,
-                  crossFadeState: !expanded ? CrossFadeState.showFirst : CrossFadeState.showSecond,
-                  duration: transitionDuration,
-                  firstChild: Container(),
-                  secondChild: _logoRemainder(),
-                  alignment: Alignment.centerLeft,
-                  sizeCurve: Curves.easeInOut,
-                ),
-              ],
-            ),
+              ),
 
-            AnimatedCrossFade(
-                  firstCurve: Curves.fastOutSlowIn,
-                  crossFadeState: !expanded ? CrossFadeState.showFirst : CrossFadeState.showSecond,
-                  duration: transitionDuration,
-                  firstChild: Container(),
-                  secondChild: _logoRemainder2(),
-                  alignment: Alignment.centerLeft,
-                  sizeCurve: Curves.easeInOut,
-                ),
-
-          ],
+            
+            ],
+          ),
         ),
       ),
     );
@@ -102,50 +105,45 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text(
-          "ANTIAGO ",
-          style: TextStyle(
-            color: Color(0xFFFF8F00),
-            fontSize: 45,
-            fontFamily: 'Montserrat',
-            fontWeight: FontWeight.w900,
-            fontStyle: FontStyle.italic,
-          ),
+        Column(
+          children: [
+            Text(
+              "ANTIAGO ",
+              style: TextStyle(
+                color: Color(0xFFFF8F00),
+                fontSize: 45,
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.w900,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
+            Text(
+              "COCINA",
+              style: TextStyle(
+                color: Colors.blue,
+                fontSize: 40,
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ],
         ),
+        
         LottieBuilder.asset(
-          'assets/food.json',
+          'assets/sarten.json',
           onLoaded: (composition) {
             _lottieAnimation..duration = composition.duration;
           },
           frameRate: FrameRate.max,
           repeat: false,
           animate: false,
-          height: 75,
-          width: 75,
+          height: 100,
+          width: 100,
           controller: _lottieAnimation,
+          fit: BoxFit.cover,
         ),
       ],
     );
   }
-
-  Widget _logoRemainder2() {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Text(
-          "COCINA",
-          style: TextStyle(
-            color: Colors.blue,
-            fontSize: 40,
-            fontFamily: 'Montserrat',
-            fontWeight: FontWeight.w600,
-            
-          ),
-        ),
-      ],
-    );
-  }
-
   
 }
