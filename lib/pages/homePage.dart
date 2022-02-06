@@ -55,8 +55,8 @@ class _HomePageState extends State<HomePage> {
                 height: 140,
               ),
               SizedBox(
-                height: 40,
-                width: 160,
+                height: MediaQuery.of(context).size.height * 0.05,
+                width: MediaQuery.of(context).size.width * 0.40,
                 child: ElevatedButton(
                   style: ButtonStyle(
                     backgroundColor:
@@ -82,8 +82,8 @@ class _HomePageState extends State<HomePage> {
                 height: 20,
               ),
               SizedBox(
-                height: 40,
-                width: 160,
+                height: MediaQuery.of(context).size.height * 0.05,
+                width: MediaQuery.of(context).size.width * 0.40,
                 child: OutlinedButton(
                   child: Text(
                     "RECETAS SALADAS",
@@ -231,8 +231,7 @@ class _HomePageState extends State<HomePage> {
                                           MaterialPageRoute(
                                               builder: (context) =>
                                                   EsqueletoPage(
-                                                    nomComida:
-                                                        busq,
+                                                    nomComida: busq,
                                                     tipoComida: "Busqueda",
                                                   )));
                                     } else {
