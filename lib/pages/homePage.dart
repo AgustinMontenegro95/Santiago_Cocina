@@ -73,7 +73,7 @@ class _HomePageState extends State<HomePage> {
                                 )));
                   },
                   child: Text(
-                    "RECETAS DULCES XD",
+                    "RECETAS DULCES",
                     style: TextStyle(fontWeight: FontWeight.w900),
                   ),
                 ),
