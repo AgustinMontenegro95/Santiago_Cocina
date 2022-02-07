@@ -308,7 +308,7 @@ class Leyenda extends StatelessWidget {
         TextButton(
           onPressed: () {},
           child: Text(
-            "DEVSGO",
+            "SOLUDEV",
             style: TextStyle(
                 color: Colors.blueAccent, fontWeight: FontWeight.w900),
           ),
