@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.05,
-                width: MediaQuery.of(context).size.width * 0.40,
+                width: MediaQuery.of(context).size.width * 0.45,
                 child: ElevatedButton(
                   style: ButtonStyle(
                     backgroundColor:
@@ -73,7 +73,7 @@ class _HomePageState extends State<HomePage> {
                                 )));
                   },
                   child: Text(
-                    "RECETAS DULCES",
+                    "RECETAS DULCES XD",
                     style: TextStyle(fontWeight: FontWeight.w900),
                   ),
                 ),
@@ -83,7 +83,7 @@ class _HomePageState extends State<HomePage> {
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.05,
-                width: MediaQuery.of(context).size.width * 0.40,
+                width: MediaQuery.of(context).size.width * 0.45,
                 child: OutlinedButton(
                   child: Text(
                     "RECETAS SALADAS",
