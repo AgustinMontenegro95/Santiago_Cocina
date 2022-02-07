@@ -139,11 +139,12 @@ class Detail extends StatelessWidget {
           boxShadow: [kBoxShadow],
         ),
         child: Center(
-          child: Text(
-            value.toString(),
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
+          child: FittedBox(
+            child: Text(
+              value.toString(),
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),

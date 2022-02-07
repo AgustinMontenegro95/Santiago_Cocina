@@ -226,7 +226,6 @@ class _EsqueletoPageState extends State<EsqueletoPage> {
                     comida.nombreComida.toString(),
                     style: TextStyle(
                       color: Color(0xFFFF8F00),
-                      fontSize: 16,
                     ),
                     textAlign: TextAlign.center,
                   ),

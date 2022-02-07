@@ -194,9 +194,11 @@ class _HomePageState extends State<HomePage> {
                                 height: 30,
                                 width: 110,
                                 child: ElevatedButton(
-                                  child: Text(
-                                    "CANCELAR",
-                                    style: TextStyle(color: Colors.white),
+                                  child: FittedBox(
+                                    child: Text(
+                                      "CANCELAR",
+                                      style: TextStyle(color: Colors.white),
+                                    ),
                                   ),
                                   onPressed: () {
                                     Navigator.of(context).pop();
@@ -217,11 +219,13 @@ class _HomePageState extends State<HomePage> {
                               ),
                               SizedBox(
                                 height: 30,
-                                width: 115,
+                                width: 110,
                                 child: ElevatedButton(
-                                  child: Text(
-                                    "BUSCAR",
-                                    style: TextStyle(color: Colors.white),
+                                  child: FittedBox(
+                                    child: Text(
+                                      "BUSCAR",
+                                      style: TextStyle(color: Colors.white),
+                                    ),
                                   ),
                                   onPressed: () {
                                     String busq = _busquedaController.text;
