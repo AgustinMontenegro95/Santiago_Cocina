@@ -220,14 +220,17 @@ class _EsqueletoPageState extends State<EsqueletoPage> {
                 ),
 
                 // Usamos Container para el contenedor de la descripción
-                Container(
-                  padding: EdgeInsets.all(5),
-                  child: Text(
-                    comida.nombreComida.toString(),
-                    style: TextStyle(
-                      color: Color(0xFFFF8F00),
+                Expanded(
+                  child: Container(
+                    padding: EdgeInsets.all(5),
+                    child: Text(
+                      comida.nombreComida.toString(),
+                      style: TextStyle(
+                        color: Color(0xFFFF8F00),
+                        fontSize: 16
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                    textAlign: TextAlign.center,
                   ),
                 ),
               ],

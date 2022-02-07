@@ -72,9 +72,11 @@ class _HomePageState extends State<HomePage> {
                                   tipoComida: "Dulce",
                                 )));
                   },
-                  child: Text(
-                    "RECETAS DULCES",
-                    style: TextStyle(fontWeight: FontWeight.w900),
+                  child: FittedBox(
+                    child: Text(
+                      "RECETAS DULCES",
+                      style: TextStyle(fontWeight: FontWeight.w900),
+                    ),
                   ),
                 ),
               ),
@@ -85,9 +87,11 @@ class _HomePageState extends State<HomePage> {
                 height: MediaQuery.of(context).size.height * 0.05,
                 width: MediaQuery.of(context).size.width * 0.45,
                 child: OutlinedButton(
-                  child: Text(
-                    "RECETAS SALADAS",
-                    style: TextStyle(color: Color(0xFFFF8F00)),
+                  child: FittedBox(
+                    child: Text(
+                      "RECETAS SALADAS",
+                      style: TextStyle(color: Color(0xFFFF8F00)),
+                    ),
                   ),
                   style: ButtonStyle(
                     shape: MaterialStateProperty.all(RoundedRectangleBorder(
