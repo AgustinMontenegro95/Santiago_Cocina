@@ -34,25 +34,22 @@ class _HomePageState extends State<HomePage> {
             image: DecorationImage(
           colorFilter: ColorFilter.srgbToLinearGamma(),
           //opacity: 0.35,
-          image: AssetImage("assets/imagen.jpg"),
+          image: AssetImage("assets/fondo.jfif"),
           fit: BoxFit.cover,
         )),
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
                 child: Container(
-                  height: 170,
-                  width: 170,
+                  height: MediaQuery.of(context).size.height * 0.50,
+                  width: MediaQuery.of(context).size.width * 0.55,
                   child: Image(
                     image: AssetImage("assets/logo_naranja.png"),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 140,
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.05,
@@ -81,22 +78,19 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               SizedBox(
-                height: 20,
+                height: MediaQuery.of(context).size.height * 0.03,
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.05,
                 width: MediaQuery.of(context).size.width * 0.45,
-                child: OutlinedButton(
-                  child: FittedBox(
-                    child: Text(
-                      "RECETAS SALADAS",
-                      style: TextStyle(color: Color(0xFFFF8F00)),
-                    ),
-                  ),
+                child: ElevatedButton(
                   style: ButtonStyle(
+                    backgroundColor:
+                      MaterialStateProperty.all<Color>(Color(0xFFFF8F00)
+                    ),
                     shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        side: BorderSide(color: Color(0xFFFF8F00)))),
+                      borderRadius: BorderRadius.circular(20.0)),
+                    ),
                   ),
                   onPressed: () {
                     Navigator.push(
@@ -106,11 +100,15 @@ class _HomePageState extends State<HomePage> {
                                   tipoComida: "Salado",
                                 )));
                   },
+                  child: FittedBox(
+                    child: Text(
+                      "RECETAS SALADAS",
+                      style: TextStyle(fontWeight: FontWeight.w900),
+                    ),
+                  ),
                 ),
               ),
-              SizedBox(
-                height: 130,
-              ),
+              Expanded(child: Container()),
               Leyenda()
             ],
           ),
@@ -297,23 +295,26 @@ class Leyenda extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(
-          Icons.developer_mode_outlined,
-          color: Color(0xFFFF8F00),
-        ),
-        Text(" Impulsado por:"),
-        TextButton(
-          onPressed: () {},
-          child: Text(
-            "SOLUDEV",
-            style: TextStyle(
-                color: Colors.blueAccent, fontWeight: FontWeight.w900),
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * 0.05,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            Icons.developer_mode_outlined,
+            color: Color(0xFFFF8F00),
           ),
-        )
-      ],
+          Text(" Impulsado por:"),
+          TextButton(
+            onPressed: () {},
+            child: Text(
+              "SOLUDEV",
+              style: TextStyle(
+                  color: Colors.blueAccent, fontWeight: FontWeight.w900),
+            ),
+          )
+        ],
+      ),
     );
   }
 }

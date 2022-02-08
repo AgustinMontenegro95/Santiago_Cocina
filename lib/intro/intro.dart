@@ -52,47 +52,50 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
         child: Container(
           color: Colors.white,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: 70),
+
+              /* SizedBox(
+                height: 70,
+
+              ), */
               SizedBox(
-                height: 200,
-                width: 200,
+                height: MediaQuery.of(context).size.height * 0.50,
+                width: MediaQuery.of(context).size.width * 0.55,
                 child: Image.asset("assets/logo_naranja.png")
               ),
-              SizedBox(height: 80,),
-              Center(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    AnimatedDefaultTextStyle(
-                      duration: transitionDuration,
-                      curve: Curves.fastOutSlowIn,
-                      style: TextStyle(
-                        color: Color(0xFFFF8F00),
-                        fontSize: !expanded ? _bigFontSize : 45,
-                        fontFamily: 'Montserrat',
-                        fontWeight: FontWeight.w900,
-                        fontStyle: FontStyle.italic,
-                      ),
-                      child: Text(
-                        "S",
-                      ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  AnimatedDefaultTextStyle(
+                    duration: transitionDuration,
+                    curve: Curves.fastOutSlowIn,
+                    style: TextStyle(
+                      color: Color(0xFFFF8F00),
+                      fontSize: !expanded ? _bigFontSize : 45,
+                      fontFamily: 'Montserrat',
+                      fontWeight: FontWeight.w900,
+                      fontStyle: FontStyle.italic,
                     ),
-                    AnimatedCrossFade(
-                      firstCurve: Curves.fastOutSlowIn,
-                      crossFadeState: !expanded ? CrossFadeState.showFirst : CrossFadeState.showSecond,
-                      duration: transitionDuration,
-                      firstChild: SizedBox(height: 0, width: 0,),
-                      secondChild: _logoRemainder(),
-                      alignment: Alignment.centerLeft,
-                      sizeCurve: Curves.easeInOut,
+                    child: Text(
+                      "S",
                     ),
-                  ],
-                ),
+                  ),
+                  AnimatedCrossFade(
+                    firstCurve: Curves.fastOutSlowIn,
+                    crossFadeState: !expanded ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+                    duration: transitionDuration,
+                    firstChild: SizedBox(height: 0, width: 0,),
+                    secondChild: _logoRemainder(),
+                    alignment: Alignment.centerLeft,
+                    sizeCurve: Curves.easeInOut,
+                  ),
+                ],
               ),
 
+              Expanded(child: Container())
             
             ],
           ),
