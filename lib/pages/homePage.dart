@@ -243,7 +243,7 @@ class _HomePageState extends State<HomePage> {
                                     } else {
                                       Fluttertoast.showToast(
                                           msg:
-                                              "¡Por favor ingrese el nombre de la comida!");
+                                              "¡Por favor, ingrese el nombre de la comida!");
                                     }
                                     _busquedaController.clear();
                                   },
