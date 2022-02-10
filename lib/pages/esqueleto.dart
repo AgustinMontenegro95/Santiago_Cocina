@@ -30,7 +30,7 @@ class _EsqueletoPageState extends State<EsqueletoPage> {
       } else if (widget.tipoComida.toString() == "Dulce") {
         appbarTitulo = "RECETAS DULCES";
       } else{
-        appbarTitulo = "BUSQUEDA";
+        appbarTitulo = "RESULTADO DE BUSQUEDA";
       }
       return appbarTitulo;
     }
@@ -87,7 +87,7 @@ class _EsqueletoPageState extends State<EsqueletoPage> {
                 return Container(
                   height: 190,
                   width: 190,
-                  child: _tarjeta1(context, comida = Comida.fromMap(document)),
+                  child: _tarjeta(context, comida = Comida.fromMap(document)),
                 );
               }),
         );
@@ -97,7 +97,6 @@ class _EsqueletoPageState extends State<EsqueletoPage> {
 
   Future<QuerySnapshot<Object?>>? busqueda(String cm) async {
     
-
     QuerySnapshot document = await db
         .collection("Salado")
         .where("Coincidencias", arrayContains: cm).get();
@@ -127,43 +126,16 @@ class _EsqueletoPageState extends State<EsqueletoPage> {
             ),
           );
         if (snapshot.data!.docs.length == 0) {
-          return Container(
-            padding: EdgeInsets.all(20),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Icon(Icons.warning_amber, color: Colors.red, size: 125,),
-                SizedBox(height: 60,),
-                Text("No existen resultados para ", 
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600, color: Colors.grey), 
-                  textAlign: TextAlign.center,
-                ),
-                Text(cm, 
-                      style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600, color: Colors.blue, fontStyle: FontStyle.italic), 
-                      textAlign: TextAlign.center,
-                    ),
-                SizedBox(height: 55,),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  }, 
-                  child: Text("VOLVER"),
-                  style: ElevatedButton.styleFrom(
-                    elevation: 10,
-                    shape: new RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30.0),
-                      side: BorderSide(color: Colors.orange),
-                    ),
-                    primary: Colors.orange,
-                  ),
-                ),
-                SizedBox(height: 120,)
-              ],
-            ),
-          );
+          return _busquedaPorTexto(cm);
         }else{
-          return Container(
+           return _construirEsqueleto(snapshot);
+        }
+      },
+    );
+  }
+
+  Widget _construirEsqueleto(AsyncSnapshot<QuerySnapshot<Object?>> snapshot){
+    return Container(
             child: GridView.builder(
                 itemCount: snapshot.data!.docs.length,
                 scrollDirection: Axis.vertical,
@@ -176,16 +148,55 @@ class _EsqueletoPageState extends State<EsqueletoPage> {
                   return Container(
                     height: 190,
                     width: 190,
-                    child: _tarjeta1(context, comida = Comida.fromMap(document)),
+                    child: _tarjeta(context, comida = Comida.fromMap(document)),
                   );
                 }),
           );
-        }
-      },
-    );
   }
-
-  Card _tarjeta1(BuildContext context, Comida comida) {
+  
+  Widget _busquedaPorTexto(String cm){
+      return Container(
+        padding: EdgeInsets.all(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(height: MediaQuery.of(context).size.height * 0.05, child: Container(color: Colors.white,),),
+            Icon(Icons.warning_amber, color: Colors.red, size: 125,),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.10, child: Container(color: Colors.white,),),
+            Text("No existen resultados para ", 
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600, color: Colors.grey), 
+              textAlign: TextAlign.center,
+            ),
+            Text('"$cm"', 
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600, color: Colors.blue, fontStyle: FontStyle.italic), 
+                  textAlign: TextAlign.center,
+                ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.10, child: Container(color: Colors.white,),),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              }, 
+              child: Container(
+                height: MediaQuery.of(context).size.height * 0.05,
+                width: MediaQuery.of(context).size.width * 0.20,
+                child: FittedBox(child: Text("VOLVER", textAlign: TextAlign.center,))),
+              style: ElevatedButton.styleFrom(
+                elevation: 10,
+                shape: new RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                  side: BorderSide(color: Colors.orange),
+                ),
+                primary: Colors.orange,
+              ),
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.10, child: Container(color: Colors.white,),),
+          ],
+        ),
+      );
+    }
+  
+  Card _tarjeta(BuildContext context, Comida comida) {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
       margin: EdgeInsets.all(5),
@@ -196,32 +207,28 @@ class _EsqueletoPageState extends State<EsqueletoPage> {
                 MaterialPageRoute(builder: (context) => Detail(comida)));
           },
           child: ClipRRect(
-            // Los bordes del contenido del card se cortan usando BorderRadius
             borderRadius: BorderRadius.circular(30),
-            // EL widget hijo que será recortado segun la propiedad anterior
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
-                // Usamos el widget Image para mostrar una imagen
-                /* Image(
-                // Como queremos traer una imagen desde un url usamos NetworkImage
-                image: NetworkImage(imagen),
-              ), */
 
-                Container(
-                  height: MediaQuery.of(context).size.height * 0.165,
-                  width: MediaQuery.of(context).size.width,
-                  child: FadeInImage(
-                    placeholder: AssetImage('assets/jar-loading.gif'),
-                    image: NetworkImage(comida.imagen.toString()),
-                    fadeInDuration: Duration(milliseconds: 200),
-                    fit: BoxFit.cover,
-                    //placeholderFit: BoxFit.cover,
-                  ),
-                ),
-
-                // Usamos Container para el contenedor de la descripción
                 Expanded(
                   child: Container(
+                    height: MediaQuery.of(context).size.height * 0.165,
+                    width: MediaQuery.of(context).size.width,
+                    child: FadeInImage(
+                      placeholder: AssetImage('assets/jar-loading.gif'),
+                      image: NetworkImage(comida.imagen.toString()),
+                      fadeInDuration: Duration(milliseconds: 200),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                
+                Center(
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height *0.08,
                     padding: EdgeInsets.all(5),
                     child: Text(
                       comida.nombreComida.toString(),
@@ -233,10 +240,13 @@ class _EsqueletoPageState extends State<EsqueletoPage> {
                     ),
                   ),
                 ),
+                
               ],
             ),
           )),
-      // Dentro de esta propiedad usamos ClipRRect
+          
     );
   }
+
 }
+

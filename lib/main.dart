@@ -1,6 +1,7 @@
 // ignore_for_file: use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:santiagococinaapp/intro/intro.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -17,6 +18,10 @@ class RecetaApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // ignore: prefer_const_constructors
+    /* SystemChrome.setPreferredOrientations([
+        DeviceOrientation.portraitUp,
+        DeviceOrientation.portraitDown,
+      ]); */
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Santiago Cocina',
