@@ -50,11 +50,11 @@ def keystoreProperties = new Properties()
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.example.santiagococinaapp"
+        applicationId "com.soludevarg.santiagococinaapp"
         minSdkVersion 19
         targetSdkVersion flutter.targetSdkVersion
-        versionCode 1 //incrementar cada version nueva
-        versionName "1.0.0" // tambien cambiar 
+        versionCode 3 //incrementar cada version nueva
+        versionName "1.0.2" // tambien cambiar 
         multiDexEnabled true
     }
 

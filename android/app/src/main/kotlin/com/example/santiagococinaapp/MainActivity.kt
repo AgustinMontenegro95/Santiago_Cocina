@@ -1,4 +1,4 @@
-package com.example.santiagococinaapp
+package com.soludevarg.santiagococinaapp
 
 import io.flutter.embedding.android.FlutterActivity
 
