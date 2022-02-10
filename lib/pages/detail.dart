@@ -18,7 +18,7 @@ class Detail extends StatelessWidget {
     final db = FirebaseFirestore.instance;
     return Scaffold(
       backgroundColor: Colors.white,
-      body: _body(context),
+      body: _body(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton.extended(
           onPressed: _launchURL,
@@ -39,7 +39,7 @@ class Detail extends StatelessWidget {
     );
   }
 
-  NestedScrollView _body(BuildContext context) {
+  NestedScrollView _body() {
     return NestedScrollView(
       headerSliverBuilder: (context, innerBoxIsScrolled) => [
         appbartarjetaReceta(context, comida),
@@ -62,7 +62,7 @@ class Detail extends StatelessWidget {
             SizedBox(
               height: 16,
             ),
-            _dificImagen(context),
+            _dificImagen(),
             _IngredPasos(),
           ],
         ),
@@ -93,49 +93,49 @@ class Detail extends StatelessWidget {
           );
   }
 
-  Container _dificImagen(BuildContext context) {
+  Container _dificImagen() {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.485,//310,
-      padding: EdgeInsets.only(left: 15),
-      child: Stack(
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              buildTextTitleVariation2('Dificultad', false),
-              SizedBox(
-                height: MediaQuery.of(context).size.height *0.02,
-              ),
-              buildNutrition(comida.dificultad.toString(), context),
-            ],
-          ),
-          Positioned(
-            right: -MediaQuery.of(context).size.height *0.14,//-80,
-            child: Hero(
-              tag: comida.imagen.toString(),
-              child: Container(
-                height: MediaQuery.of(context).size.height * 0.485,
-                width: MediaQuery.of(context).size.height * 0.485,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  image: DecorationImage(
-                    image: NetworkImage(comida.imagen.toString()),
-                    fit: BoxFit.cover,
+            height: 310,
+            padding: EdgeInsets.only(left: 15),
+            child: Stack(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    buildTextTitleVariation2('Dificultad', false),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    buildNutrition(comida.dificultad.toString()),
+                  ],
+                ),
+                Positioned(
+                  right: -90,
+                  child: Hero(
+                    tag: comida.imagen.toString(),
+                    child: Container(
+                      height: 310,
+                      width: 310,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        image: DecorationImage(
+                          image: NetworkImage(comida.imagen.toString()),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-              ),
+              ],
             ),
-          ),
-        ],
-      ),
-    );
+          );
   }
 
-  Widget buildNutrition(String value, BuildContext context) {
+  Widget buildNutrition(String value) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.10,//60,
-      width: MediaQuery.of(context).size.height * 0.225,//150,
+      height: 60,
+      width: 150,
       padding: EdgeInsets.all(5),
       decoration: BoxDecoration(
         color: Colors.grey[50],
