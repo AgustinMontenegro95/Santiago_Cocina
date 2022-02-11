@@ -164,7 +164,7 @@ class _HomePageState extends State<HomePage> {
           label: 'COMPARTIR APP',
           onPressed: () {
             Share.share(
-                "Te invitamos a descargar la aplicación Santiago Cocina haciendo click en el siguiente enlace: https://play.google.com/store/apps/details?id=com.linkedin.android&hl=es_AR&gl=US");
+                "Te invitamos a descargar la aplicación Santiago Cocina haciendo click en el siguiente enlace: https://play.google.com/store/apps/details?id=com.soludevarg.santiagococinaapp");
           },
           closeSpeedDialOnPressed: true,
         )

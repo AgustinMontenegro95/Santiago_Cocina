@@ -27,7 +27,7 @@ SliverAppBar appbartarjetaReceta(BuildContext context, Comida comida) {
       IconButton(
         onPressed: () {
           Share.share(
-              "Receta de ${comida.nombreComida}. \n\n-> Descripcion: ${comida.descripcion} \n\nEncontra más información descargando la aplicación Santiago Cocina en: https://play.google.com/store/apps/details?id=com.linkedin.android&hl=es_AR&gl=US");
+              "Receta de ${comida.nombreComida}. \n\n-> Descripcion: ${comida.descripcion} \n\nEncontra más información descargando la aplicación Santiago Cocina en: https://play.google.com/store/apps/details?id=com.soludevarg.santiagococinaapp");
         },
         icon: Icon(
           Icons.share,
